@@ -25,21 +25,21 @@ function LoginComponent() {
         router.push('/recent-posts')
     }
     return (
-        <form onSubmit={e => handleLogin(e)}>
+        <form className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" onSubmit={e => handleLogin(e)}>
             
-            <div className="d-flex align-items-center mb-3 pb-1">
+            <div className="text-center mb-10">
                 <i className="fas fa-cubes fa-2x me-3"></i>
-                <span className="h1 fw-bold mb-5 mx-auto">Adminha</span>
-            </div>
-            <h5 className="fw-normal mb-3 pb-3">Sign into your account</h5>
-            <div className="form-outline mb-4">
+                <h1 className="text-dark mb-3">Adminha</h1>
+                <h5 className="text-gray-400 fw-bold fs-4">Sign into your account</h5>
+            </div>            
+            <div className="fv-row mb-10 fv-plugins-icon-container">
                 <input type="text" id="form2Example17" placeholder="Username" className="form-control form-control-lg" onChange={e => handleUsernameChange(e.target.value)} />
             </div>
-            <div className="form-outline mb-4">
+            <div className="fv-row mb-10 fv-plugins-icon-container">
                 <input type="password" id="form2Example27" className="form-control form-control-lg" placeholder="Password" onChange={e => handlePasswordChange(e.target.value)} />
             </div>
-            <div className="pt-1 mb-4">
-                <button className="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+            <div className="text-center">
+                <button className="btn btn-lg btn-primary w-100 mb-5" type="submit">Login</button>
             </div>
         </form>
     );

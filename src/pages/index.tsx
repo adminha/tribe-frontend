@@ -1,23 +1,25 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-
+import { useAppSelector } from '../app/hooks'
 import Counter from '../features/counter/Counter'
-import styles from '../styles/Home.module.css'
+import { selectLoginStatus } from './auth/login/login-redux'
 import Login from './auth/[login]'
+import Head from './templates/master/head'
+import Master from './templates/master/master'
+import RecentPosts from './[recent-posts]'
 
 const IndexPage: NextPage = () => {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Redux Toolkit</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {/* <header className={styles.header}>
-        <Counter />
-      </header> */}
+  const isLoggedIn = useAppSelector(selectLoginStatus)
+  if (isLoggedIn == true) {
+    return (
+      <RecentPosts />
+    )
+  }
+  else {
+    return (
       <Login />
-    </div>
-  )
+    )
+  }
+  
 }
 
 export default IndexPage

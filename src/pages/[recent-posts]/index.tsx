@@ -4,6 +4,9 @@ import { usePosts, useFeed } from '@tribeplatform/react-sdk/hooks'
 import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils'
 import Login from "../auth/[login]";
 import { LikeButton } from "./like-button";
+import Master from "../templates/master/master";
+import Head from "../templates/master/head";
+import Post from "../templates/posts/post";
 
 function RecentPosts() {
     const isLoggedIn = useAppSelector(selectLoginStatus)
@@ -21,20 +24,21 @@ function RecentPosts() {
         variables: { limit: 10 },
       })
       const { nodes: latestPosts } = simplifyPaginatedResult(posts)
+      console.log(latestPosts)
     if (isLoggedIn == true) {      
           return (
-            <main>
-              {isLoading && <div>Loading...</div>}
-              <ul>
+            <>
+              <Head title="Recent Posts" />
+              {isLoading && <div>Loading...</div>} 
+              <div className="row row-cols-1 row-cols-md-2 g-4">
                 {latestPosts?.map(post => {
                   return (
-                      <>
-                        <li>{post.title}</li>
-                        <LikeButton post={post} />
-                    </>
+                      <div className="col">
+                        <Post post={post} />
+                      </div>
                   )
-                })}
-              </ul>
+                })}                
+                </div>
               {hasNextPage && (
                 <button
                   onClick={() => fetchNextPage()}
@@ -42,7 +46,7 @@ function RecentPosts() {
                   {isFetchingNextPage ? `Loading more...` : `Load more`}
                 </button>
               )}      
-            </main>
+            </>
           )
     }
     else {

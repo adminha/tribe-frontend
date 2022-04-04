@@ -1,15 +1,14 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import '../styles/style.bundle.css'
 
 import { Provider } from 'react-redux'
 import type { AppProps } from 'next/app'
 import { Provider as TribeProvider } from '@tribeplatform/react-sdk'
 
+
 import store from '../app/store'
-import { useAppSelector } from '../app/hooks'
-import { selectTribeAccessToken } from './auth/login/login-redux'
-import MemberAccessToken from './auth/tribe/member-access-token'
-import axios from 'axios'
+import Master from './templates/master/master'
 
 
 export default function MyApp({ Component, pageProps }: AppProps) { 
@@ -21,7 +20,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         baseUrl: 'https://app.tribe.so/graphql',
       }}
       >
-        <Component {...pageProps} />
+        <Master>
+          <Component {...pageProps} />
+        </Master>
       </TribeProvider>
     </Provider>
   )
