@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector, useForm } from "../../../app/hooks";
 import LoginApi from "../../api/login";
-import { changeLoginStatus, changeTribeAccessToken, selectLoginStatus } from "./login-redux";
+import { changeLoginStatus, selectLoginStatus, updateUserObject } from "./login-redux";
 import { useRouter } from 'next/router'
 
 function LoginComponent() {
@@ -19,9 +19,9 @@ function LoginComponent() {
     }
     const handleLogin = async (e) => {
         e.preventDefault();
-        let result = await LoginApi(data)
+        let result = await LoginApi(data) 
         dispatch(changeLoginStatus(result[0]))
-        dispatch(changeTribeAccessToken(result[1]))
+        dispatch(updateUserObject(result[1]))
         router.push('/recent-posts')
     }
     return (

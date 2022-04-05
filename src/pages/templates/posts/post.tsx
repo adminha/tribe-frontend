@@ -1,6 +1,7 @@
 import Moment from 'moment';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { LikeButton } from './like-button';
 
 function Post(props) {
     const router = useRouter()
@@ -24,10 +25,19 @@ function Post(props) {
                 <div className="row g-10" dangerouslySetInnerHTML={{ __html: props.post.shortContent }}></div>
             </div>
             <div className="card-footer align-items-center">
-                <div className='float-start'>{Moment(props.post.createdAt).format('ddd MM yyyy, HH:mm')}</div>
-                <Link href={{ pathname: '[recent-posts]/[slug]', query: {...router.query, pid}}} as={`recent-posts/${props.post.slug}?id=${pid}`}>
-                    <a className="btn btn-primary float-end">Read More</a>
-                </Link>
+                <div className='row'>
+                    <div className='col'>
+                        {Moment(props.post.createdAt).format('ddd MM yyyy, HH:mm')}
+                    </div>
+                    <div className='col'>
+                        <Link href={{ pathname: 'recent-posts/[slug]', query: {...router.query, pid}}} as={`recent-posts/${props.post.slug}?id=${pid}`}>
+                            <a className="btn btn-primary float-end">Read More</a>
+                        </Link>
+                    </div>
+                    <div className='col'>
+                        <LikeButton post={props.post} />
+                    </div>
+                </div>
                 
             </div>
         </div>

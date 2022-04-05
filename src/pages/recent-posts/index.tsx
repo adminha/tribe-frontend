@@ -2,8 +2,8 @@ import { useAppSelector } from "../../app/hooks";
 import { selectLoginStatus } from "../auth/login/login-redux";
 import { usePosts, useFeed } from '@tribeplatform/react-sdk/hooks'
 import { simplifyPaginatedResult } from '@tribeplatform/react-sdk/utils'
-import Login from "../auth/[login]";
-import { LikeButton } from "./like-button";
+import Login from "../auth/login";
+import { LikeButton } from "../templates/posts/like-button";
 import Master from "../templates/master/master";
 import Head from "../templates/master/head";
 import Post from "../templates/posts/post";
@@ -24,7 +24,6 @@ function RecentPosts() {
         variables: { limit: 10 },
       })
       const { nodes: latestPosts } = simplifyPaginatedResult(posts)
-      console.log(latestPosts)
     if (isLoggedIn == true) {      
           return (
             <>
@@ -40,7 +39,7 @@ function RecentPosts() {
                 })}                
                 </div>
               {hasNextPage && (
-                <button
+                <button className="btn btn-success"
                   onClick={() => fetchNextPage()}
                 >
                   {isFetchingNextPage ? `Loading more...` : `Load more`}

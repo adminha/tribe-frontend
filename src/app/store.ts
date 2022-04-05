@@ -4,7 +4,7 @@ import { loginSlice } from '../pages/auth/login/login-redux'
 
 export function makeStore() {
   return configureStore({
-    reducer: { loginState : loginSlice.reducer},
+    reducer: { loginState : loginSlice.reducer, userObject: loginSlice.reducer},
   })
 }
 

@@ -10,19 +10,21 @@ import {
     const reacted = !!post?.reactions?.find(reaction => {
       return reaction.reaction === '+1' && reaction.reacted
     })
+
+    const handleLikeWithRewards = (post) => {
+      console.log(post)
+        if (reacted) unlikePost({ postId: post?.id, reaction: '+1' })
+        else
+          likePost({
+            postId: post?.id,
+            input: { reaction: '+1' },
+          })
+    }
   
     return (
-      <button
-        onClick={e => {
-          if (reacted) unlikePost({ postId: post?.id, reaction: '+1' })
-          else
-            likePost({
-              postId: post?.id,
-              input: { reaction: '+1' },
-            })
-        }}
-      >
+      <button className='btn btn-success float-end'
+        onClick={() => handleLikeWithRewards(post)}>
         {reacted ? "Unlike" : "Like"}
       </button>
     )
-  }
+}

@@ -3,12 +3,13 @@ import { usePost } from '@tribeplatform/react-sdk/hooks'
 
 function SinglePost() {
     const router = useRouter()
-    const id = router.query.pid.toString()
-    const {data: post} = usePost({variables: {id: id}})
+    const postid = router.query.pid as string
+    const {data: post} = usePost({variables: {id: postid}})
+
     console.log(post)
     return (
         <div className="card">
-            {id}
+            {postid}
             {/* <div className="card-header py-10">
                 <div className="row align-items-center">
                     <div className="col-2">
