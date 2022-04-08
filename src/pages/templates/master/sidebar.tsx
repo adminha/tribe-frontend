@@ -36,16 +36,65 @@ const Sidebar = () => {
                                 </Link>
                                 <span className="menu-arrow"></span>
                             </span>
+                            <span className="menu-link">
+                                <span className="menu-icon">
+                                    <span className="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <Link href="/rewards/wallet">
+                                    <span className="menu-title">My Wallet</span>
+                                </Link>
+                                <span className="menu-arrow"></span>
+                            </span>
+                            <span className="menu-link">
+                                <span className="menu-icon">
+                                    <span className="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <Link href="/rewards">
+                                    <span className="menu-title">My Rewards</span>
+                                </Link>
+                                <span className="menu-arrow"></span>
+                            </span>
+                            <span className="menu-link">
+                                <span className="menu-icon">
+                                    <span className="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <Link href="/rewards">
+                                    <span className="menu-title">Tribe Settings</span>
+                                </Link>
+                                <span className="menu-arrow"></span>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
-                <Link href='rewards'>
-                    <a className="btn btn-custom btn-primary w-100">
-                        <span className="btn-label">My Reaction Rewards</span>
-                    </a>
-                </Link>
+                <a href='https://github.com/adminha/tribe/' className="btn btn-custom btn-primary w-100 fs-8">
+                    Github Repo (Backend/NestJS)
+                </a>
+                <a href='https://github.com/adminha/tribe-frontend/' className="btn btn-custom btn-primary w-100 mt-5 fs-8">
+                    Github Repo (Frontend/React+Redux+NextJS)
+                </a>
             </div>
         </div>
     );

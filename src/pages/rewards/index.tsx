@@ -1,12 +1,16 @@
 import Link from "next/link";
+import Head from "../templates/master/head";
 
 function Rewards() {
     return (
-        <div>
-            <Link href='rewards/wallet'>
-                <a>Choose wallet</a>
-            </Link>
-        </div>
+        <>
+            <Head title="My Rewards" />
+            <div>
+                <Link href='rewards/wallet'>
+                    <a>Choose wallet</a>
+                </Link>
+            </div>
+        </>
     );
 }
 
