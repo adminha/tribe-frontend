@@ -1,6 +1,11 @@
+import { removeCookies } from "cookies-next";
 import Link from "next/link";
+import { useAppSelector } from "../../../app/hooks";
+import { selectLoginStatus } from "../../auth/login/login-redux";
+import Logout from "../../auth/logout";
 
 const Sidebar = () => {
+    const isLoggedIn = useAppSelector(selectLoginStatus)
     return (
         <div id="kt_aside" className="aside aside-dark aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle">
             <div className="aside-logo flex-column-auto" id="kt_aside_logo">
@@ -83,6 +88,36 @@ const Sidebar = () => {
                                     <span className="menu-title">Tribe Settings</span>
                                 </Link>
                                 <span className="menu-arrow"></span>
+                            </span>
+                            <span className="menu-link">
+                                <span className="menu-icon">
+                                    <span className="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <Link href="/">
+                                    <span className="menu-title" onClick={Logout}>Logout</span>
+                                </Link>
+                            </span>
+                            <span className="menu-link">
+                                <span className="menu-icon">
+                                    <span className="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <Link href="/auth/register">
+                                    <span className="menu-title">Register</span>
+                                </Link>
                             </span>
                         </div>
                     </div>

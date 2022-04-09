@@ -1,7 +1,8 @@
+import { removeCookies } from "cookies-next";
 import { useRouter } from "next/router";
 
-const Logout = () => {
-    localStorage.clear();
+function Logout() {
+    removeCookies("NestJwtToken")
     const router = useRouter()
     return (
         router.push("/")

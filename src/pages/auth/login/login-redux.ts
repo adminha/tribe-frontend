@@ -2,6 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import type { AppState } from '../../../app/store'
 
+export interface walletObject {
+  id: number,
+  address: string,
+}
+
 export interface userObject {
   isLoggedIn: boolean,
   userObject: {
@@ -12,7 +17,9 @@ export interface userObject {
         username: string,
         frontTheme: boolean,
         createdAt: string,
-        updtedAt: string
+        updtedAt: string,
+        defaultWalletId: number;
+        wallets: walletObject[],
       },
     }
 }
@@ -26,7 +33,9 @@ const initialState: userObject = {
       username: "",
       frontTheme: false,
       createdAt: "",
-      updtedAt: ""
+      updtedAt: "",
+      defaultWalletId: 0,
+      wallets: []
     }
   }
 }

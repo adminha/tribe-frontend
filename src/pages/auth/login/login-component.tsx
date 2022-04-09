@@ -19,9 +19,11 @@ function LoginComponent() {
     }
     const handleLogin = async (e) => {
         e.preventDefault();
-        let result = await LoginApi(data) 
-        dispatch(changeLoginStatus(result[0]))
-        dispatch(updateUserObject(result[1]))
+        await LoginApi(data).then((success) => {
+            console.log(success)
+            dispatch(changeLoginStatus(true))
+            dispatch(updateUserObject(success.data))
+        })
         router.push('/recent-posts')
     }
     return (

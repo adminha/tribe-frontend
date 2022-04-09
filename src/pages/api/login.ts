@@ -7,9 +7,9 @@ async function LoginApi(data): Promise<any> {
     return axios.post(API_URL + '/auth/login', data).then((success) => {
         setCookies('NestJwtToken', success.data.access_token)
         MemberAccessToken()
-        return [true, success.data]
+        return success
     }, (failure) => {
-        return false
+        return failure
     })
 }
 export default LoginApi
