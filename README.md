@@ -1,25 +1,45 @@
-# Redux Toolkit TypeScript Example
+# React/Redux/Next.js frontend project for Tribe challenge
 
-This example shows how to integrate Next.js with [Redux Toolkit](https://redux-toolkit.js.org).
+This frontend project is built for *Tribe Code Challenge* which will use this [NestJS backend](https://github.com/adminha/tribe) as a service provider.
 
-The **Redux Toolkit** is a standardized way to write Redux logic (create actions and reducers, setup the store with some default middlewares like redux devtools extension). This example demonstrates each of these features with Next.js
+So before running this project, make sure the backend is installed & running.
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-redux&project-name=with-redux&repository-name=with-redux)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Installation & Usage
 
 ```bash
-npx create-next-app --example with-redux with-redux-app
-# or
-yarn create next-app --example with-redux with-redux-app
-# or
-pnpm create next-app -- --example with-redux with-redux-app
+npm install
+```
+or 
+```bash
+yarn
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+After that, 
+```bash
+npm run dev
+```
+
+## Idea behind this project
+
+As a code challenge, I tried to make a very simple app by creating both backend & frontend parts. 
+
+This app uses `Jwt` as authorization. When a user logs-in a Cookie with the Jwt token value will be set. On every request, the backend service will verify that `Jwt` token to return what user requested.
+
+There are 6 different pages:
+
+1. Auth (login & register) pages.
+2. Dashboard (recent posts of the community on Tribe)
+3. Single page of the post
+4. Wallet page (Where user can set or generate ethereum wallets as many as they want, and choose the default one)
+5. Rewards page (Where user can see the rewards he gained for his reactions on community posts)
+6. Tribe user setting page (Where user can update his information on Tribe platform) *didn't have enough time to complete this one*
+
+On every reaction a logged-in user makes on posts (Like or Comment), the user will receive `100 TRT` or `Tribe Reward Token` in his wallet immediately.
+
+These rewards with corresponding transaction Id on ethereum network will then be available in `rewards` page.
+
+## Please Note
+
+In order to not facing any errors, please first generate a new wallet and set the default one, then do the reaction (like or comment). You may face errors if you don't have any wallets in case of reaction and the transaction may fail.
+
+
