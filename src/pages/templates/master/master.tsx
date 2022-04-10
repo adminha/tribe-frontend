@@ -1,13 +1,13 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useAppSelector } from "../../../app/hooks";
-import { selectLoginStatus } from "../../auth/login/login-redux";
+import { selectLoginStatus } from "../../../app/login-redux";
 import Content from "./content";
 import Footer from "./footer";
 import Header from "./header";
 import Sidebar from "./sidebar";
 
-const Master = (props) => {
-	const isLoggedIn = useAppSelector(selectLoginStatus)
-	console.log(isLoggedIn)
+function Master(props) {
     return (
 		<div className="d-flex flex-column flex-root">
 			<div className="page d-flex flex-row flex-column-fluid">

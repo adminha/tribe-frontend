@@ -1,5 +1,5 @@
 import { useState } from "react"
-import RegisterApi from "../../api/register";
+import RegisterApi from "../../../app/api/register";
 
 function RegisterComponent() {
     const [ButtonText, setButtonText] = useState('Register')

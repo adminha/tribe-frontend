@@ -14,7 +14,7 @@ function Post(props) {
                         <img className="img w-100 rounded-circle" src={props.post.owner.member.profilePicture.url} />
                     </div>
                     <div className="col-10">
-                    <Link href={'[recent-posts]/[slug]'} as={`recent-posts/${props.post.slug}`}>
+                    <Link href={{ pathname: 'recent-posts/[slug]', query: {...router.query, pid}}} as={`recent-posts/${props.post.slug}?id=${pid}`}>
                         <a><h1 className="fs-2x text-dark">{props.post.title}</h1></a>
                     </Link>
                         <div className="fs-5 text-muted fw-bold">{props.post.owner.member.name}, {props.post.owner.member.tagline}</div>
@@ -29,13 +29,11 @@ function Post(props) {
                     <div className='col'>
                         {Moment(props.post.createdAt).format('ddd MM yyyy, HH:mm')}
                     </div>
-                    <div className='col'>
-                        <Link href={{ pathname: 'recent-posts/[slug]', query: {...router.query, pid}}} as={`recent-posts/${props.post.slug}?id=${pid}`}>
-                            <a className="btn btn-primary float-end">Read More</a>
-                        </Link>
-                    </div>
-                    <div className='col'>
+                    <div className='col text-end'>
                         <LikeButton post={props.post} />
+                        <Link href={{ pathname: 'recent-posts/[slug]', query: {...router.query, pid}}} as={`recent-posts/${props.post.slug}?id=${pid}`}>
+                            <a className="btn btn-primary">Read More</a>
+                        </Link>                        
                     </div>
                 </div>
                 

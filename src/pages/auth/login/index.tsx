@@ -1,4 +1,4 @@
-import LoginPageTemplate from "./login/page-template";
+import LoginPageTemplate from "./page-template";
 
 function Login() {
     return (

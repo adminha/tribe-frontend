@@ -1,5 +1,4 @@
 function PostReplies(props) {
-    console.log(props.reply)
     return(
         <div className="row my-9">
             <div className="col-10">

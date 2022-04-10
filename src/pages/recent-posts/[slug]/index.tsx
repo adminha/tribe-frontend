@@ -7,7 +7,6 @@ function SinglePostIndex() {
     const router = useRouter()
     const postid = router.query.pid as string
     const {data: post, isLoading, isFetched} = usePost({id: postid})
-    
     return (
         <>
         <Head />

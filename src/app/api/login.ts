@@ -1,5 +1,5 @@
 import axios from 'axios'
-import MemberAccessToken from '../auth/tribe/member-access-token'
+import MemberAccessToken from './tribe/member-access-token'
 import API_URL from './global'
 import { setCookies } from 'cookies-next';
 

@@ -1,24 +1,19 @@
 import type { NextPage } from 'next'
 import { useAppSelector } from '../app/hooks'
-import { selectLoginStatus } from './auth/login/login-redux'
-import Head from './templates/master/head'
-import Master from './templates/master/master'
+import { selectLoginStatus } from '../app/login-redux'
 import RecentPosts from './recent-posts'
-import Login from './auth/login'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 const IndexPage: NextPage = () => {
   const isLoggedIn = useAppSelector(selectLoginStatus)
-  if (isLoggedIn == true) {
-    return (
-      <RecentPosts />
-    )
-  }
-  else {
-    return (
-      <Login />
-    )
-  }
-  
+	const router = useRouter()
+	useEffect(() => {
+	  isLoggedIn ? router.push('/recent-posts') : router.push('/auth/login')
+	}, [])  
+  return (
+    <RecentPosts />
+  )  
 }
 
 export default IndexPage

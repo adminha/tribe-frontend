@@ -1,14 +1,25 @@
 import { PostMappingTypeEnum } from "@tribeplatform/gql-client/types"
 import { useAddReply } from "@tribeplatform/react-sdk/hooks"
 import { useState } from "react"
+import { useAppSelector } from "../../../app/hooks"
+import { SendRewards } from "../../../app/api/rewards"
+import { selectUserObject } from "../../../app/login-redux"
 
 function AddReply(props) {
-    const {mutate: AddReply} = useAddReply()
-    
+    const {mutateAsync: addReply} = useAddReply()
+    const userObject = useAppSelector(selectUserObject)
     const [Comment, setComment] = useState(null)
     const submitForm = (e) => {
         e.preventDefault();
-        AddReply({postId: props.postId, input: replyObject})
+        addReply({postId: props.postId, input: replyObject}).then(() => {
+            setComment('')
+            SendRewards({
+                username: userObject.user.username,
+                tribeReactionId: props.postId
+            }).then(() => {
+                alert('You have received 100 TRT Tokens in your wallet. Please check the rewards page for transaction ID')
+            })
+        })
     }
     const handleInputChange = (e) => {
         setComment(e.target.value)
@@ -19,7 +30,7 @@ function AddReply(props) {
         {
             key: "content",
             type: PostMappingTypeEnum.HTML,
-            value: Comment
+            value: JSON.stringify(Comment)
         }
         ],
         publish: true,

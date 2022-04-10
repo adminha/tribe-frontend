@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { useAppDispatch, useAppSelector, useForm } from "../../../app/hooks";
-import LoginApi from "../../api/login";
-import { changeLoginStatus, selectLoginStatus, updateUserObject } from "./login-redux";
+import { useAppDispatch } from "../../../app/hooks";
+import LoginApi from "../../../app/api/login";
 import { useRouter } from 'next/router'
+import { changeLoginStatus, updateUserObject } from "../../../app/login-redux";
 
 function LoginComponent() {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
     const data = {username: username, password: password}
-    const isLoggedIn = useAppSelector(selectLoginStatus)
     const dispatch = useAppDispatch()
     const router = useRouter()
     const handleUsernameChange = (value) => {
@@ -20,7 +19,6 @@ function LoginComponent() {
     const handleLogin = async (e) => {
         e.preventDefault();
         await LoginApi(data).then((success) => {
-            console.log(success)
             dispatch(changeLoginStatus(true))
             dispatch(updateUserObject(success.data))
         })
@@ -28,7 +26,6 @@ function LoginComponent() {
     }
     return (
         <form className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" onSubmit={e => handleLogin(e)}>
-            
             <div className="text-center mb-10">
                 <i className="fas fa-cubes fa-2x me-3"></i>
                 <h1 className="text-dark mb-3">Adminha</h1>

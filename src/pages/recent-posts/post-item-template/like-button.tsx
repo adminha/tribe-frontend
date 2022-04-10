@@ -3,9 +3,9 @@ import {
     useRemoveReaction,
   } from '@tribeplatform/react-sdk/hooks'
 import { useState } from 'react'
+import { SendRewards } from '../../../app/api/rewards'
 import { useAppSelector } from '../../../app/hooks'
-import { SendRewards } from '../../api/rewards'
-import { selectUserObject } from '../../auth/login/login-redux'
+import { selectUserObject } from '../../../app/login-redux'
   
   export function LikeButton({ post }) {
     const { mutate: likePost } = useAddReaction()
@@ -38,7 +38,7 @@ import { selectUserObject } from '../../auth/login/login-redux'
     }
   
     return (
-      <button className='btn btn-success float-end'
+      <button className='btn btn-success me-3'
         onClick={() => handleLikeWithRewards(post)}>
         {reacted ? "Unlike" : ButtonText}
       </button>

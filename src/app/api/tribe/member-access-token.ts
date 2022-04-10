@@ -1,5 +1,5 @@
 import axios from "axios";
-import API_URL from "../../api/global";
+import API_URL from "../global";
 import { setCookies } from 'cookies-next';
 
 function MemberAccessToken() {

@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
-import { loginSlice } from '../pages/auth/login/login-redux'
+import { loginSlice } from './login-redux'
 
 
 export function makeStore() {
